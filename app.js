@@ -4,11 +4,20 @@ var path = require('path');
 //var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+const cors = require('cors');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
+const corsOptions ={
+    origin:'*', 
+    credentials:true,
+    optionSuccessStatus:200
+}
+
 var app = express();
+
+app.use(cors(corsOptions));
 
 // view engine setup
 app.use(express.static(__dirname + '../public'));
