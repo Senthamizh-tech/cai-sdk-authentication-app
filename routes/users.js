@@ -4,13 +4,12 @@ var fs = require('fs');
 var config = require('../config');
 
 var jwt = require('jsonwebtoken');
+const verbiageBuilder = require('../helper/verbiageBuilder');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
-
-
 
 router.post('/', function(req, res, next) {
   var identity = req.body.identity;
@@ -29,6 +28,10 @@ router.post('/', function(req, res, next) {
   }
 	var token = jwt.sign(options, clientSecret);
   res.send({"jwt":token});
+});
+
+router.get('/verbiagebuilder', function(req, res, next) {
+  res.send({"data": verbiageRespData});
 });
 
 module.exports = router;
