@@ -4,20 +4,12 @@ var path = require('path');
 //var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-const cors = require('cors');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
-
-const corsOptions ={
-    origin:'*', 
-    credentials:true,
-    optionSuccessStatus:200
-}
+const verbiageBuilder = require('./helper/verbiageBuilder');
 
 var app = express();
-
-app.use(cors(corsOptions));
 
 // view engine setup
 app.use(express.static(__dirname + '../public'));
@@ -33,7 +25,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'sdk')));
 
-app.use('/', routes);
+verbiageRespData = verbiageBuilder();
+
+// app.use('/', routes);
 app.use('/api/users/sts', users);
 
 // catch 404 and forward to error handler
