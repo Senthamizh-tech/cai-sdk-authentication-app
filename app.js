@@ -8,6 +8,13 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 const verbiageBuilder = require('./helper/verbiageBuilder');
+const cors = require('cors');
+
+const corsOptions ={
+    origin:'*', 
+    credentials:true,
+    optionSuccessStatus:200
+}
 
 var app = express();
 
@@ -16,6 +23,7 @@ app.use(express.static(__dirname + '../public'));
 app.set('views', path.join(__dirname, 'views'));
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'jade');
+app.use(cors(corsOptions));
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
