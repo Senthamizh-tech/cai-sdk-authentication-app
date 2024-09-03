@@ -34,4 +34,16 @@ router.get('/verbiagebuilder', function(req, res, next) {
   res.send({"data": verbiageRespData});
 });
 
+router.get("/orderStatus", async function (req, res, next) {
+const resp = await getOrderStatus(req.query.orderId);
+  res.send({
+    text: "ESI_PHA_ORD_MGMT_ORD_DETAILS_SIMPLE_TXT",
+    data: {
+      source_lang: "en",
+      order_status: resp[0].orderStatus,
+      name:resp[0].Name
+    },
+  });
+});
+
 module.exports = router;
