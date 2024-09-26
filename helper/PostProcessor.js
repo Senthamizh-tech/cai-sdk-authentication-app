@@ -1,4 +1,5 @@
-var fetch = require('node-fetch');
+// var fetch = require('node-fetch');
+import fetch from 'node-fetch';
 
 //Bot message post processing utility function
 async function populateBotResponse(context, responseId) {
