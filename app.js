@@ -33,7 +33,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'sdk')));
 
-verbiageRespData = verbiageBuilder();
+// verbiageRespData = verbiageBuilder();
+verbiage_En_RespData = verbiageBuilder("ESI_PHA_BOT_RESP_BUILDER_EN_CA.xlsx");
+verbiage_Fr_RespData = verbiageBuilder("ESI_PHA_BOT_RESP_BUILDER_FR_CA.xlsx");
 
 // app.use('/', routes);
 app.use('/api/users/sts', users);
