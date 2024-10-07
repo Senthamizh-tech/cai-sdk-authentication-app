@@ -42,11 +42,17 @@ const resp = await getOrderStatus(req.query.orderId);
   });
 });
 
-router.post('/verbiagebuilder', function(req, res, next) {
+router.post('/v1/verbiagebuilder', function(req, res, next) {
   const language = req.body.currentLang;
   const verbiageBuilderData = language === 'en' ? verbiage_En_RespData : verbiage_Fr_RespData;
   let result = verbiageBuilderData.filter((ele) => ele.RESPONSE_ID === req.body.responseId);
   res.send({"data": result});
+});
+
+router.post('/v2/verbiagebuilder', function(req, res, next) {
+  const language = req.body.currentLang;
+  const verbiageBuilderData = language === 'en' ? verbiage_En_RespData : verbiage_Fr_RespData;
+  res.send({"data": verbiageBuilderData});
 });
 
 module.exports = router;
