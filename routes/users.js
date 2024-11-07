@@ -55,4 +55,10 @@ router.post('/v2/verbiagebuilder', function(req, res, next) {
   res.send({"data": verbiageBuilderData});
 });
 
+router.post('/redaction', function(req, res, next) {
+  const redactedValue = req.body.userInput;
+  console.log("redactedValue ===> ", redactedValue);
+  res.send({"data": redactedValue});
+});
+
 module.exports = router;
